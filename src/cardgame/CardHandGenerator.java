@@ -7,6 +7,7 @@ public class CardHandGenerator {
     /**
      * 
      * @param numCards
+     * @return 
      */
     public static Card[] generateHand(int numCards) {
                //create an array to hold 7 cards
