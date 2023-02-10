@@ -1,8 +1,5 @@
 package cardgame;
 
-import cardgame.Card.Suit;
-import cardgame.Card.Value;
-import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -19,18 +16,9 @@ public class CardGame {
         Scanner input = new Scanner(System.in);
         
         //create an array to hold 7 cards
-        Card[] hand = new Card[7];
+        Card[] hand = CardHandGenerator.generateHand(7);
         
-        // use Random class to generate random numbers
-        Random random = new Random();
         
-        for (int i = 0; i < hand.length; i++){
-            Value value = Card.Value.values()[random.nextInt(13)];
-            Suit suit = Card.Suit.values()[random.nextInt(4)];
-            
-            Card card = new Card(value, suit);
-            hand[i] = card;
-        }
             // print out the cards generated for debugging purposes
             System.out.println("Here are the cards in the hand");
             for(Card card: hand){
