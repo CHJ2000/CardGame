@@ -1,5 +1,7 @@
 package cardgame;
 
+import cardgame.Card.Suit;
+import cardgame.Card.Value;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -23,8 +25,8 @@ public class CardGame {
         Random random = new Random();
         
         for (int i = 0; i < hand.length; i++){
-            int value = random.nextInt(13);
-            String suit = Card.SUITS[random.nextInt(4)];
+            Value value = Card.Value.values()[random.nextInt(13)];
+            Suit suit = Card.Suit.values()[random.nextInt(4)];
             
             Card card = new Card(value, suit);
             hand[i] = card;
@@ -36,18 +38,18 @@ public class CardGame {
             }
             // Now ask the user for a card
             System.out.println("Pick a suit for your card: ");
-            for(int i = 0; i < Card.SUITS.length; i++){
-                System.out.println((i + 1) + " : " + Card.SUITS[i]);
+            for(int i = 0; i < Card.Suit.values().length; i++){
+                System.out.println((i + 1) + " : " + Card.Suit.values()[i]);
             }
-            int suit = input.nextInt();
+            int suitPosition = input.nextInt() - 1;
             
             System.out.print("Enter a value (1-13)");
-//            for(int i = 0; i < Card.Value.values().length; i++){
-//                System.out.println((i + 1) + ": " + Card.Value.values()[i]);
-//            }
-            int value = input.nextInt();
+            for(int i = 0; i < Card.Value.values().length; i++){
+             System.out.println((i + 1) + ": " + Card.Value.values()[i]);
+            }
+            int valuePosition = input.nextInt() - 1;
             
-            Card userGuess = new Card(value, Card.SUITS[suit]);
+            Card userGuess = new Card(Card.Value.values()[valuePosition], Card.Suit.values()[suitPosition]);
             
             //now check for a match
             boolean match = false;
